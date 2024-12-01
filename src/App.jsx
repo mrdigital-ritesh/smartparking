@@ -13,7 +13,7 @@ import Prices from "./components/Prices/Prices";
 import Availability from "./components/Availability/Availability";
 import Footer from "./components/Footer/Footer";
 import BookingForm from "./components/BookingForm/BookingForm";
-import SignUp from "./components/signup/signup";
+import SignUp from "./components/signup/SignUp";
 
 const App = () => {
   const [theme, setTheme] = useState(
