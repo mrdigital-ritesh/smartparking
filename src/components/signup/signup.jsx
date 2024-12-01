@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../../supabaseClient";
 import BookingForm from "../BookingForm/BookingForm";
 
-function Signup({ setToken ,setUser, theme }) {
+function SignUp({ setToken ,setUser, theme }) {
   const navigate = useNavigate();
 
   // State management
@@ -213,4 +213,4 @@ function Signup({ setToken ,setUser, theme }) {
 }
 
 
-export default Signup;
+export default SignUp;

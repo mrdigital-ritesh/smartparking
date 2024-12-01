@@ -12,8 +12,8 @@ import Services from "./components/Services/Services";
 import Prices from "./components/Prices/Prices";
 import Availability from "./components/Availability/Availability";
 import Footer from "./components/Footer/Footer";
-import Signup from "./components/signup/Signup";
 import BookingForm from "./components/BookingForm/BookingForm";
+import SignUp from "./components/signup/signup";
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -106,7 +106,7 @@ const App = () => {
         <Navbar theme={theme} setTheme={setTheme} user={user} />
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
-          <Route path="/signup" element={<Signup setUser={setUser} setToken={setToken} theme={theme} />} />
+          <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} theme={theme} />} />
           <Route
             path="/booking"
             element={user ? <BookingForm user={user} /> : <Navigate to="/signup" />}
