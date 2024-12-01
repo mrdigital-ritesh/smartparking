@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .link {
+    @apply cursor-pointer hover:underline;
+  }
+  .button-outline {
+    @apply rounded-md border-2 border-primary hover:bg-primary/80 hover:text-black duration-500 py-2 px-6 text-primary tracking-wider;
+  }
+  .button-outlinedark {
+    @apply mt-5 rounded-md border-2 border-black hover:bg-primary/80 hover:text-black duration-500 py-2 px-6 text-black tracking-wider;
+  }
+}
+
+.loader {
+  border-width: 4px;
+  border-color: gray;
+  border-top-color: #3498db; /* Primary color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.responsive-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Aspect ratio: 16:9 */
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+/* Example global dark mode styles */
+html {
+  transition: background-color 0.3s ease;
+}
+
+html.dark {
+  background-color: #1a202c; /* Dark background */
+  color: white; /* White text */
+}
+.frm{
+  margin-top: 20px;
+}
+/* for login */
+/* General Styles */
+.form-container {
+  
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: var(--text-color); /* Use the text color variable */
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-color); /* Use the text color variable */
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--text-color); /* Use the text color variable */
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 4px;
+  background-color: var(--input-background-color);
+  color: var(--input-text-color); /* Input text color variable */
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--focus-border-color);
+}
+
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.message.success {
+  color: green;
+}
+
+.message.error {
+  color: red;
+}
+
+.form-switch {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.switch-button {
+  color: #007bff;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.switch-button:hover {
+  text-decoration: underline;
+}
+
+/* Light Theme Variables */
+:root {
+  --background-color: #ffffff;
+  --text-color: #333;
+  --input-background-color: #f9f9f9;
+  --input-text-color: #333;
+  --input-border-color: #ddd;
+  --focus-border-color: #007bff;
+  --border-color: #ddd;
+}
+
+/* Dark Theme Variables */
+[data-theme='dark'] {
+  --background-color: #333;
+  --text-color: #ffffff;
+  --input-background-color: #444;
+  --input-text-color: #ffffff;
+  --input-border-color: #555;
+  --focus-border-color: #007bff;
+  --border-color: #444;
+}
