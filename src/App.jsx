@@ -100,40 +100,10 @@ const App = () => {
     
   };
 
-  const [installPrompt, setInstallPrompt] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      console.log('beforeinstallprompt fired');
-      e.preventDefault();
-      setInstallPrompt(e);
-    });
-    return () => {
-      window.removeEventListener('beforeinstallprompt', (e) => {});
-    };
-  }, []);
-
-  const handleInstall = async () => {
-    if (installPrompt) {
-      installPrompt.prompt();
-      const { outcome } = await installPrompt.userChoice;
-      if (outcome === 'accepted') {
-        console.log('PWA installed');
-      }
-      setInstallPrompt(null);
-    }
-  };
-
-
   return (
     <Router>
       <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
         <Navbar theme={theme} setTheme={setTheme} user={user} />
-        {installPrompt && (
-        <button onClick={handleInstall} className="install-button">
-          Install App
-        </button>
-      )}
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
           <Route path="/signup" element={<SignUp setUser={setUser} setToken={setToken} theme={theme} />} />
