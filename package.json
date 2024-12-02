@@ -20,7 +20,8 @@
     "react-router-dom": "^7.0.1",
     "react-router-hash-link": "^2.4.3",
     "styled-components": "^6.1.13",
-    "twilio": "^5.3.6"
+    "twilio": "^5.3.6",
+    "vite-plugin-pwa": "^0.21.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
