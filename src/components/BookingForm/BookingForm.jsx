@@ -50,6 +50,37 @@ const BookingForm = ({ user }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  
+  //   const { carNumber, date, time, pricingModel } = formData;
+  //   const selectedPricing = pricingModels.find((model) => model.name === pricingModel);
+  //   const price = selectedPricing?.price || 0;
+  
+  //   const createdAt = new Date().toISOString(); // Current timestamp in ISO format
+  
+  //   const { error } = await supabase
+  //     .from("bookings")
+  //     .insert([
+  //       {
+  //         user_id: user.id,
+  //         car_number: carNumber,
+  //         date,
+  //         time,
+  //         pricing_model: pricingModel,
+  //         price,
+  //         created_at: createdAt, // Add the current timestamp
+  //       },
+  //     ]);
+  
+  //   if (error) {
+  //     console.error("Error inserting booking:", error);
+  //     alert("There was an error while booking the slot.");
+  //   } else {
+  //     alert("Slot booked successfully!");
+  //     await fetchBookings(); // Refresh bookings
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -59,6 +90,7 @@ const BookingForm = ({ user }) => {
   
     const createdAt = new Date().toISOString(); // Current timestamp in ISO format
   
+    // Insert booking into the database
     const { error } = await supabase
       .from("bookings")
       .insert([
@@ -69,16 +101,44 @@ const BookingForm = ({ user }) => {
           time,
           pricing_model: pricingModel,
           price,
-          created_at: createdAt, // Add the current timestamp
+          created_at: createdAt,
         },
       ]);
   
     if (error) {
       console.error("Error inserting booking:", error);
       alert("There was an error while booking the slot.");
-    } else {
-      alert("Slot booked successfully!");
-      await fetchBookings(); // Refresh bookings
+      return;
+    }
+  
+    // Call API to send SMS
+    try {
+      const response = await fetch("/api/sendBookingSms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phoneNumber: user.user_metadata.phone, // User's phone number from metadata
+          message: `Booking Confirmed: 
+          Car Number: ${carNumber}, 
+          Date: ${date}, 
+          Time: ${time}, 
+          Pricing: ${pricingModel} - ₹${price}`,
+        }),
+      });
+  
+      const result = await response.json();
+      if (result.success) {
+        alert("Slot booked and SMS sent successfully!");
+        await fetchBookings(); // Refresh bookings
+      } else {
+        console.error("SMS API Error:", result.error);
+        alert("Booking successful, but SMS could not be sent.");
+      }
+    } catch (smsError) {
+      console.error("Error sending SMS:", smsError);
+      alert("Booking successful, but SMS could not be sent.");
     }
   };
   
