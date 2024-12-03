@@ -115,6 +115,18 @@ function SignUp({ setToken ,setUser, theme }) {
     }
   };
   
+  const switchFormType = (type) => {
+    setFormType(type);
+    setMessage(null);
+    setErrorMessage(null);
+    setFormData({
+      fullname: "",
+      email: "",
+      phno: "",
+      password: "",
+    });
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -194,14 +206,14 @@ function SignUp({ setToken ,setUser, theme }) {
         {formType === "login" ? (
           <>
             Don't have an account?{" "}
-            <button onClick={() => setFormType("signup")} className="switch-button">
+            <button onClick={() => switchFormType("signup")} className="switch-button">
               Sign up
             </button>
           </>
         ) : (
           <>
             Already have an account?{" "}
-            <button onClick={() => setFormType("login")} className="switch-button">
+            <button onClick={() => switchFormType("login")} className="switch-button">
               Log in
             </button>
           </>

@@ -32,10 +32,14 @@ const ResponsiveMenu = ({ showMenu, setShowMenu, user, theme, setTheme, handleLo
       {/* User Info */}
       <div className="card">
   <div className="flex items-center justify-start gap-2 w-full">
-    <FaUserCircle size={50} />
+   <a onClick={() => {
+              Openbooking();
+              handleMenuClick(); // Close menu after logout
+            }} > <FaUserCircle size={50} />  </a>
     <div className="flex flex-col">
       <h1 className="mt-1 text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis">{user ? user?.user_metadata?.fullname : "Guest"}!</h1>
       <h1 className="text-sm text-slate-500">
+        
         {user ? "Premium User" : "Sign up for more!"}
       </h1>
     </div>
@@ -88,7 +92,7 @@ const ResponsiveMenu = ({ showMenu, setShowMenu, user, theme, setTheme, handleLo
       </div>
 
       {/* Footer */}
-      <div className="footer mt-8">
+      <div className="footer mt-8 drop-shadow-lg text-m font-semibold whitespace-nowrap text-ellipsis">
         <h1>
           Made with ❤ by{" "}
           <a

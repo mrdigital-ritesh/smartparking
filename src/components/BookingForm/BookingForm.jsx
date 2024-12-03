@@ -190,6 +190,7 @@ Thank you for choosing us! Have a great day! 🎉
             onChange={handleInputChange}
             className="border w-full p-2 rounded dark:bg-gray-700 dark:text-white"
             required
+            maxLength={12} 
           />
         </div>
         <div className="mb-4">
@@ -230,7 +231,7 @@ Thank you for choosing us! Have a great day! 🎉
             required
           >
             <option value="" disabled>
-              Select a pricing model
+              Select a parking pricing
             </option>
             {pricingModels.map((model) => (
               <option key={model.name} value={model.name}>

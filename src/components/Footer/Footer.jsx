@@ -98,7 +98,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="footer mt-5">
-        <h1>
+        <h1 className="mt-1 ml-12 text-lg font-semibold whitespace-nowrap text-ellipsis drop-shadow-lg">
           Made with ❤ by{" "}
           <a
             href="https://www.linkedin.com/in/ritesh-bagdi-50b3b1262/"
