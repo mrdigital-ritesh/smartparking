@@ -33,8 +33,8 @@ export default async (req, res) => {
     try {
       const response = await client.messages.create({
         body: message,
-        from: process.env.TWILIO_PHONE_NUMBER, // Twilio phone number from environment variables
-        to: phoneNumber,
+        from: '+17754179014', // Twilio phone number from environment variables
+        to: '+917597372851',
       });
       return res.status(200).json({ success: true, sid: response.sid });
     } catch (error) {
