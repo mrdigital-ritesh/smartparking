@@ -131,8 +131,8 @@ const BookingForm = ({ user }) => {
       const result = await response.json();
       if (result.success) {
         alert("Slot booked and SMS sent successfully!");
-        await fetchBookings(); // Refresh bookings
-      } else {
+      }
+       else {
         console.error("SMS API Error:", result.error);
         alert("Booking successful, but SMS could not be sent.");
       }
