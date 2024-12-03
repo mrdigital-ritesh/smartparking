@@ -120,18 +120,19 @@ const BookingForm = ({ user }) => {
         },
         body: JSON.stringify({
           phoneNumber:"7597372851", // User's phone number from metadata
-          message: `
-           SMARTPARKING 
-      🚗 Booking Confirmed 🚗
-      ━━━━━━━━━━━━━━━━━━━━━━
-      🆔 Car Number: ${carNumber}  
-      📅 Date: ${date}  
-      ⏰ Time: ${time}  
-      💳 Pricing Model: ${pricingModel}  
-      💰 Price: ₹${price}  
-      ━━━━━━━━━━━━━━━━━━━━━━
-      Thank you for choosing us! Have a great day! 🎉
-          `,
+          message: 
+      `
+      SMARTPARKING 
+🚗 Booking Confirmed 🚗
+━━━━━━━━━━━━━━━━━━━━━━
+🆔 Car Number: ${carNumber}  
+📅 Date: ${date}  
+⏰ Time: ${time}  
+💳 Pricing Model: ${pricingModel}  
+💰 Price: ₹${price}  
+━━━━━━━━━━━━━━━━━━━━━━
+Thank you for choosing us! Have a great day! 🎉
+`,
         }),
       });
   
