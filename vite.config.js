@@ -9,19 +9,19 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: {
         name: 'SmartParking',
-        short_name: 'SmartParking',
+        short_name: 'SmartPark',
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#4CAF50',
         icons: [
           {
-            src: '/car1.png',
+            src: '/app1.png',
             sizes: '192x192',
             type: 'image/png',
           },
           {
-            src: '/car1.png',
+            src: '/app1.png',
             sizes: '512x512',
             type: 'image/png',
           },
