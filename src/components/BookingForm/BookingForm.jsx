@@ -119,9 +119,8 @@ const BookingForm = ({ user }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          phoneNumber: "7597372851", // User's phone number from metadata
+          phoneNumber: user?.user_metadata?.phone || "7597372851", // User's phone number from metadata
           message: `Booking Confirmed: 
-          
           `,
         }),
       });
