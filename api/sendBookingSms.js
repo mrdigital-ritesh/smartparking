@@ -1,32 +1,32 @@
-const twilio = require("twilio");
+import twilio from 'twilio';
+import dotenv from 'dotenv';
 
-const accountSid = process.env.TWILIO_ACCOUNT_SID; // Your Twilio Account SID
-const authToken = process.env.TWILIO_AUTH_TOKEN; // Your Twilio Auth Token
-const twilioPhone = process.env.TWILIO_PHONE_NUMBER; // Your Twilio phone number
+dotenv.config();
 
-const client = twilio(accountSid, authToken);
+const client = twilio(
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ success: false, error: "Method not allowed" });
+export default async (req, res) => {
+  if (req.method === 'POST') {
+    const { phoneNumber, message } = req.body;
+
+    if (!phoneNumber || !message) {
+      return res.status(400).json({ error: 'Missing phoneNumber or message' });
+    }
+
+    try {
+      const response = await client.messages.create({
+        body: message,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: phoneNumber,
+      });
+      return res.status(200).json({ success: true, sid: response.sid });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  } else {
+    res.status(405).json({ error: 'Method Not Allowed' });
   }
-
-  const { phoneNumber, message } = req.body;
-
-  if (!phoneNumber || !message) {
-    return res.status(400).json({ success: false, error: "Missing phoneNumber or message." });
-  }
-
-  try {
-    const twilioResponse = await client.messages.create({
-      body: message,
-      from: twilioPhone,
-      to: phoneNumber,
-    });
-
-    res.status(200).json({ success: true, response: twilioResponse });
-  } catch (error) {
-    console.error("Error sending SMS:", error);
-    res.status(500).json({ success: false, error: error.message });
-  }
-}
+};
