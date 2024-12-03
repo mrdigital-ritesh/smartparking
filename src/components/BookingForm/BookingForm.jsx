@@ -114,12 +114,12 @@ const BookingForm = ({ user }) => {
     // Call API to send SMS
     try {
       const response = await fetch("/api/sendBookingSms", {
-        method: "",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          phoneNumber: user?.user_metadata?.phone || "+917597372851", // User's phone number from metadata
+          phoneNumber: user?.user_metadata?.phone || "7597372851", // User's phone number from metadata
           message: `Booking Confirmed: 
           `,
         }),
