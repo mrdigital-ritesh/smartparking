@@ -128,7 +128,7 @@ const BookingForm = ({ user }) => {
 🆔 Car Number: ${carNumber}  
 📅 Date: ${date}  
 ⏰ Time: ${time}  
-💳 Pricing Model: ${pricingModel}  
+💳 Parking Duration: ${pricingModel}  
 💰 Price: ₹${price}  
 ━━━━━━━━━━━━━━━━━━━━
 Thank you for choosing us! Have a great day! 🎉

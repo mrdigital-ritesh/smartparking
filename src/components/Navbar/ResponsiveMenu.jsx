@@ -27,37 +27,34 @@ const ResponsiveMenu = ({ showMenu, setShowMenu, user, theme, setTheme, handleLo
     <div
       className={`${
         showMenu ? "left-0" : "-left-[100%]"
-      } fixed bottom-0 top-0 z-20 flex h-screen w-[75%] flex-col justify-between bg-white dark:bg-gray-900 dark:text-white px-8 pb-6 pt-16 text-black transition-all duration-200 md:hidden rounded-r-xl shadow-md`}
+      } fixed bottom-0 top-0 z-20 flex h-screen w-[75%] flex-col justify-between bg-white dark:bg-gray-900 dark:text-white px-6 pb-6 pt-10 text-black transition-all duration-200 md:hidden rounded-r-xl shadow-md`}
     >
       {/* User Info */}
       <div className="card">
-        <div className="flex items-center justify-start gap-3">
-          <FaUserCircle size={50} />
-          <div>
-            <h1>{user ? user?.user_metadata?.fullname : "Guest"}!</h1>
-            <h1 className="text-sm text-slate-500">
-              {user ? "Premium User" : "Sign up for more!"}
-            </h1>
-          </div>
+  <div className="flex items-center justify-start gap-2 w-full">
+    <FaUserCircle size={50} />
+    <div className="flex flex-col">
+      <h1 className="mt-1 text-lg font-semibold whitespace-nowrap overflow-hidden text-ellipsis">{user ? user?.user_metadata?.fullname : "Guest"}!</h1>
+      <h1 className="text-sm text-slate-500">
+        {user ? "Premium User" : "Sign up for more!"}
+      </h1>
+    </div>
+    <button
+      onClick={handleThemeToggle}
+      className="p-2  bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded-full ml-auto"
+    >
+      {theme === "dark" ? (
+        <span role="img" aria-label="Light Mode">
+          🌞
+        </span>
+      ) : (
+        <span role="img" aria-label="Dark Mode">
+          🌙
+        </span>
+      )}
+    </button>
+  </div>
 
-          {/* Theme Toggle Button */}
-          <div className="theme-toggle-container mt-1 ml-20">
-            <button
-              onClick={handleThemeToggle}
-              className="p-2 bg-gray-200 dark:bg-gray-800 text-black dark:text-white rounded-full"
-            >
-              {theme === "dark" ? (
-                <span role="img" aria-label="Light Mode">
-                  🌞
-                </span>
-              ) : (
-                <span role="img" aria-label="Dark Mode">
-                  🌙
-                </span>
-              )}
-            </button>
-          </div>
-        </div>
 
         {/* Navigation Links */}
         <nav className="mt-12">
