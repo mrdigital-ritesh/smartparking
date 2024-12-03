@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: {
         name: 'SmartParking',
-        short_name: 'SmartPark',
+        short_name: 'SmartParking',
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',
