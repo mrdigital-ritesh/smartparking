@@ -4,11 +4,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Twilio client initialization
-const client = twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-);
-
+// const client = twilio(
+//   process.env.TWILIO_ACCOUNT_SID,
+//   process.env.TWILIO_AUTH_TOKEN
+// );
+const accountSid = 'ACf9caf1c253f9185a3c388b850a9b6c25';
+const authToken = 'e1093e86e0617304bea2ad645d26776c';
+const client = twilio(accountSid, authToken);
 export default async (req, res) => {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins or replace '*' with your front-end domain
