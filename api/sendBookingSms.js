@@ -10,7 +10,7 @@ dotenv.config();
 // );
 //new api new acc...
 const accountSid = 'AC28d2903bcf25eefdb0747e2f59f3bab0';
-const authToken = 'e20e7d6e2d7f3606dbf27b7ae74b3451';
+const authToken = 'a5f46daa0bf7c6c5ec091f9f1432c0d1';
 const client = twilio(accountSid, authToken);
 export default async (req, res) => {
  
