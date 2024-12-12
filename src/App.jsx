@@ -83,7 +83,8 @@ const App = () => {
       const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
         if (session) {
           setUser(session.user); 
-          setUser(null);  
+        } else {
+          setUser(null); 
         }
       });
     
