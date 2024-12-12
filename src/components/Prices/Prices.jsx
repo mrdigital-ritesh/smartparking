@@ -27,7 +27,6 @@ const prices = [
 ];
 
 const Prices = () => {
-  // Function to handle scroll to Availability
   const handleScrollToAvailability = () => {
     const availabilitySection = document.getElementById("availability");
     if (availabilitySection) {
@@ -39,7 +38,7 @@ const Prices = () => {
 
   const Openbooking  =()=> {
    
-        navigate("/booking"); // Redirect to the booking page immediately}
+        navigate("/booking"); 
   };
   };
   const navigate = useNavigate();
@@ -47,7 +46,7 @@ const Prices = () => {
 
   const Openbooking  =()=> {
    
-        navigate("/booking"); // Redirect to the booking page immediately}
+        navigate("/booking"); 
   };
 
   return (
@@ -102,7 +101,7 @@ const Prices = () => {
           <button
             data-aos="fade-up"
             className="button-outline"
-            onClick={handleScrollToAvailability} // Attach the scroll function
+            onClick={handleScrollToAvailability} 
           >
             CHECK AVAILABILITY
           </button>

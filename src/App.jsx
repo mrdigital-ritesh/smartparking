@@ -4,7 +4,6 @@ import "aos/dist/aos.css";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 
-// Component imports
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
@@ -21,10 +20,9 @@ const App = () => {
   );
   const element = document.documentElement;
 
-  const [user, setUser] = useState(null); // Track logged-in user
+  const [user, setUser] = useState(null); //check user
   const [token, setToken] = useState(null);
   useEffect(() => {
-    // Check if a user is already logged in
     const getUser = async () => {
       const { data } = await supabase.auth.getUser();
       setUser(data.user);
@@ -52,7 +50,7 @@ const App = () => {
     AOS.refresh();
   }, []);
 
-  // Scroll to Top functionality
+  // Scroll
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
@@ -75,24 +73,20 @@ const App = () => {
     });
 
     useEffect(() => {
-      // Fetch user session and set user state accordingly
       const fetchSession = async () => {
         const { data: { user } } = await supabase.auth.getSession();
-        setUser(user); // Set user data from session
+        setUser(user); 
       };
     
       fetchSession();
     
-      // Listen for session changes
       const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
         if (session) {
-          setUser(session.user); // Update user state on session change
-        } else {
-          setUser(null); // Reset user if no session
+          setUser(session.user); 
+          setUser(null);  
         }
       });
     
-      // Cleanup listener on unmount
       return () => {
         listener?.unsubscribe();
       };

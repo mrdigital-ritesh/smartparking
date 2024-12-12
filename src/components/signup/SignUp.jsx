@@ -17,22 +17,19 @@ function SignUp({ setToken ,setUser, theme }) {
 
   const [message, setMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(true); // Initial page loading
-  const [formLoading, setFormLoading] = useState(false); // Form submission loading
+  const [loading, setLoading] = useState(true); 
+  const [formLoading, setFormLoading] = useState(false); 
 
 
   useEffect(() => {
-    // Apply the theme to the document element
-    document.documentElement.setAttribute("data-theme", theme); // theme will be "light" or "dark"
+    document.documentElement.setAttribute("data-theme", theme); 
   }, [theme]);
   
-  // Simulate initial page loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 500);
 
-    // Check if a user session already exists
     const fetchSession = async () => {
       const {
         data: { session },
@@ -40,7 +37,7 @@ function SignUp({ setToken ,setUser, theme }) {
 
       if (session) {
         setToken(session);
-        navigate("/booking"); // Redirect to homepage if already logged in
+        navigate("/booking"); 
       }
     };
 
@@ -48,7 +45,6 @@ function SignUp({ setToken ,setUser, theme }) {
     return () => clearTimeout(timer);
   }, [navigate, setToken]);
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -103,10 +99,9 @@ function SignUp({ setToken ,setUser, theme }) {
       if (error) {
         setErrorMessage("Invalid email or password.");
       } else {
-        // Set the user session data immediately after successful login
         setUser(data.user);
         setToken(data);
-        navigate("/booking"); // Redirect to the booking page immediately
+        navigate("/booking"); 
       }
     } catch (error) {
       setErrorMessage(error.message);

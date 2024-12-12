@@ -12,7 +12,7 @@ const Availability = ({ theme }) => {
 
   const Openbooking  =()=> {
    
-        navigate("/booking"); // Redirect to the booking page immediately}
+        navigate("/booking"); 
   };
 
 
@@ -46,7 +46,7 @@ const Availability = ({ theme }) => {
         { event: '*', schema: 'public', table: 'slot' },
         (payload) => {
           console.log('Real-time payload:', payload);
-          setSlots(payload.new.data); // Update slots on change
+          setSlots(payload.new.data); //updateslots
         }
       )
       .subscribe();

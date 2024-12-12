@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../../supabaseClient"; // Make sure your Supabase client is set up
+import { supabase } from "../../supabaseClient"; 
 
 const BookingForm = ({ user }) => {
   const [loading, setLoading] = useState(true);
@@ -10,7 +10,7 @@ const BookingForm = ({ user }) => {
     time: "",
     pricingModel: "",
   });
-  const [bookings, setBookings] = useState([]); // State to store user's bookings
+  const [bookings, setBookings] = useState([]); 
 
   const pricingModels = [
     { name: "ONE - HOUR", price: 59, aosDelay: "0" },
@@ -19,7 +19,6 @@ const BookingForm = ({ user }) => {
   ];
 
   useEffect(() => {
-    // Simulate loading delay
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -28,14 +27,14 @@ const BookingForm = ({ user }) => {
 
   const fetchBookings = async () => {
     const { data, error } = await supabase
-      .from("bookings") // Replace with your bookings table name
+      .from("bookings") 
       .select("*")
-      .eq("user_id", user.id); // Fetch bookings for the logged-in user
+      .eq("user_id", user.id); 
 
     if (error) {
       console.error("Error fetching bookings:", error);
     } else {
-      setBookings(data); // Update bookings state
+      setBookings(data); 
     }
   };
 
@@ -88,9 +87,8 @@ const BookingForm = ({ user }) => {
     const selectedPricing = pricingModels.find((model) => model.name === pricingModel);
     const price = selectedPricing?.price || 0;
   
-    const createdAt = new Date().toISOString(); // Current timestamp in ISO format
+    const createdAt = new Date().toISOString(); 
   
-    // Insert booking into the database
     const { error } = await supabase
       .from("bookings")
       .insert([
@@ -111,7 +109,6 @@ const BookingForm = ({ user }) => {
       return;
     }
   
-    // Call API to send SMS
     try {
       const response = await fetch("/api/sendBookingSms", {
         method: "POST",
@@ -119,7 +116,7 @@ const BookingForm = ({ user }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          phoneNumber:"7597372851", // User's phone number from metadata
+          phoneNumber:"7597372851", 
           message: 
       `
       SMARTPARKING 

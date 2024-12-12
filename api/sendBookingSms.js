@@ -12,17 +12,16 @@ const accountSid = 'ACf9caf1c253f9185a3c388b850a9b6c25';
 const authToken = '91d118fff831c3594ca2948ea29389f2';
 const client = twilio(accountSid, authToken);
 export default async (req, res) => {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*'); // Allow all origins or replace '*' with your front-end domain
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); // Allow specific HTTP methods
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Allow Content-Type header
+ 
+  res.setHeader('Access-Control-Allow-Origin', '*'); 
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST'); 
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); 
 
-  // Handle OPTIONS preflight request (necessary for CORS)
   if (req.method === 'OPTIONS') {
-    return res.status(200).end(); // Respond to preflight request
+    return res.status(200).end(); 
   }
 
-  // POST request to send SMS
+  
   if (req.method === 'POST') {
     const { phoneNumber, message } = req.body;
 
@@ -33,7 +32,7 @@ export default async (req, res) => {
     try {
       const response = await client.messages.create({
         body: message,
-        from: '+17754179014', // Twilio phone number from environment variables
+        from: '+17754179014',
         to: '+917597372851',
       });
       return res.status(200).json({ success: true, sid: response.sid });

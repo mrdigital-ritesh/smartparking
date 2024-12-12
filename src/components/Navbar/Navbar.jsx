@@ -3,7 +3,7 @@ import { HashLink } from "react-router-hash-link";
 import { Link } from "react-router-dom";
 import { BiSolidSun, BiSolidMoon } from "react-icons/bi";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
-import { supabase } from "../../supabaseClient"; // Adjust the path as needed
+import { supabase } from "../../supabaseClient"; 
 import ResponsiveMenu from "./ResponsiveMenu";
 
 export const Navlinks = [
@@ -33,7 +33,6 @@ const Navbar = ({ theme, setTheme }) => {
       }
     );
 
-    // Ensure the subscription is not null and has unsubscribe method before calling it
     return () => {
       if (subscription && typeof subscription.unsubscribe === "function") {
         subscription.unsubscribe();

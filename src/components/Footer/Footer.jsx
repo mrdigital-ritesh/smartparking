@@ -1,11 +1,11 @@
 import React from "react";
-import { HashLink } from "react-router-hash-link";  // Import HashLink for hash-based navigation
+import { HashLink } from "react-router-hash-link";  
 import { FaFacebook, FaInstagram, FaLinkedin, FaLocationArrow, FaMobileAlt } from "react-icons/fa";
 
 const FooterLinks = [
   {
     title: "Home",
-    link: "/#",  // Hash-based link
+    link: "/#",  
   },
   {
     title: "About",
